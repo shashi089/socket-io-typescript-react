@@ -1,6 +1,7 @@
 import express from "express"
 import http from "http"
 import cors from "cors"
+import { ServerSocket } from "./socket";
 
 
 const app = express()
@@ -8,6 +9,8 @@ app.use(cors({
     credentials:true,
 }))
 const server = http.createServer(app)
+
+new  ServerSocket(server)
 
 /** Parse the body of the request */
 app.use(express.urlencoded({ extended: true }));
